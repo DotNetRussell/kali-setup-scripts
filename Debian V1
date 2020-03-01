@@ -1,0 +1,60 @@
+apt-get update;
+apt-get upgrade -y;
+
+echo 'Installing gpg'
+apt-get install gpg -y;
+
+echo 'Configuring public keys'
+gpg --keyserver keyserver.ubuntu.com --recv-keys ED444FF07D8D0BF6
+gpg -a --export ED444FF07D8D0BF6 | sudo apt-key add -
+
+echo 'Adding kali repos to sources.list'
+echo 'deb http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+
+echo 'Running update and upgrade'
+apt-get update;
+apt-get upgrade -y;
+
+apt-get install unzip -y;
+apt-get install curl -y;
+apt-get install git -y;
+apt-get install openvpn -y;
+apt-get install network-manager-openvpn -y;
+
+apt-get install aespipe -y;
+
+echo 'Installing h@ck3r t00l5'
+
+apt-get install nmap -y;
+apt-get install nikto -y;
+apt-get install dirb -y;
+apt-get install wfuzz -y;
+apt-get install ncat -y;
+apt-get install mitmproxy -y;
+
+wget https://raw.githubusercontent.com/DotNetRussell/ShinobiShell/master/ShinobiShell.py;
+chmod +x ShinobiShell;
+mv ShinobiShell /usr/bin/shinobishell
+
+apt-get install sublist3r -y;
+apt-get install dnsrecon -y;
+apt-get install cadaver -y;
+
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
+
+
+echo 'Setting up LAMP stack'
+apt-get install apache2 -y;
+apt install mariadb-server -y;
+apt install php libapache2-mod-php php-mysql -y;
+service apache2 stop;
+
+echo 'Installing wordlists'
+cd /usr/share/
+git clone https://github.com/3ndG4me/KaliLists.git wordlists
+
+# don't worry, just ascii art ;-)
+base64 -d <<< "ICAgICAgICAgICAgICAgICAgICAgICAgICAgIF9vb2Q+SCZIJlo/I00jYi1cLgogICAgICAgICAgICAgICAgICAgICAgICAuXEhNTU1NTVI/YFxNNmIuImAnICcnYGB2LgogICAgICAgICAgICAgICAgICAgICAuLiAuTU1NTU1NTU1NTUhNTU0jJi4gICAgICBgYH5vLgogICAgICAgICAgICAgICAgICAgLiAgICxITU1NTU1NTU1NTWAnICcgICAgICAgICAgID9NUD8uCiAgICAgICAgICAgICAgICAgIC4gfE1NTU1NTU1NTU1NJyAgICAgICAgICAgICAgICAgYCIkYiZcCiAgICAgICAgICAgICAgICAgLSAgfE1NTU1ISCMjTScgICAgICAgICAgICAgICAgICAgICBITU1IPwogICAgICAgICAgICAgICAgLSAgIFRUTXwgICAgID4uLiAgICAgICAgICAgICAgICAgICBcSE1NTU1ICiAgICAgICAgICAgICAgIDogICAgIHxNTVwsIy0iIiR+YlwuICAgICAgICAgICAgICAgIGBNTU1NTU0rCiAgICAgICAgICAgICAgLiAgICAgICBgYCJIJiMgICAgICAgIC0gICAgICAgICAgICAgICAmTU1NTU1NfAogICAgICAgICAgICAgIDogICAgICAgICAgICAqXHYsI01IZGRjLiAgICAgICAgICAgICAgYDlNTU1NTWIKICAgICAgICAgICAgICAuICAgICAgICAgICAgICAgTU1NTU1NTU0jI1wgICAgICAgICAgICAgYCIiOkhNCiAgICAgICAgICAgICAgLSAgICAgICAgICAuICAuSE1NTU1NTU1NTU1Sb18uICAgICAgICAgICAgICB8TQogICAgICAgICAgICAgIDogICAgICAgICAgICAgfE1NTU1NTU1NTU1NTU1NTU0jXCAgICAgICAgICAgOk0KICAgICAgICAgICAgICAtICAgICAgICAgICAgICBgSE1NTU1NTU1NTU1NTU1NJyAgICAgICAgICAgIHxUCiAgICAgICAgICAgICAgOiAgICAgICAgICAgICAgIGAqSE1NTU1NTU1NTU1NJyAgICAgICAgICAgICBIJwogICAgICAgICAgICAgICA6ICAgICAgICAgICAgICAgIE1NTU1NTU1NTU1NfCAgICAgICAgICAgICB8VAogICAgICAgICAgICAgICAgOyAgICAgICAgICAgICAgIE1NTU1NTU1NPycgICAgICAgICAgICAgIC4vCiAgICAgICAgICAgICAgICAgYCAgICAgICAgICAgICAgTU1NTU1NSCcgICAgICAgICAgICAgICAuLycKICAgICAgICAgICAgICAgICAgLSAgICAgICAgICAgIHxNTU1IIycgICAgICAgICAgICAgICAgIC4KICAgICAgICAgICAgICAgICAgIGAgICAgICAgICAgIGBNTSogICAgICAgICAgICAgICAgLiBgCiAgICAgICAgICAgICAgICAgICAgIF8gICAgICAgICAgI006IC4gICAgLiAgICAgICAuLScKICAgICAgICAgICAgICAgICAgICAgICAgLiAgICAgICAgICAuLCAgICAgICAgIC4tJwogICAgICAgICAgICAgICAgICAgICAgICAgICAnLS4tfm9vSEhfXywsdn4tLWAnCgogICAgX18gIF9fICAgICAgICAgICBfXyAgICAgIF9fICBfXyAgICAgICAgICAgIF9fX18gIF9fICAgICAgICAgICAgICAgICBfXwogICAvIC8gLyAvX19fIF9fX19fXy8gL19fICAgLyAvXy8gL18gIF9fXyAgICAgLyBfXyBcLyAvX19fIF9fX19fICBfX18gIC8gL18KICAvIC9fLyAvIF9fIGAvIF9fXy8gLy9fLyAgLyBfXy8gX18gXC8gXyBcICAgLyAvXy8gLyAvIF9fIGAvIF9fIFwvIF8gXC8gX18vCiAvIF9fICAvIC9fLyAvIC9fXy8gLDwgICAgLyAvXy8gLyAvIC8gIF9fLyAgLyBfX19fLyAvIC9fLyAvIC8gLyAvICBfXy8gL18KL18vIC9fL1xfXyxfL1xfX18vXy98X3wgICBcX18vXy8gL18vXF9fXy8gIC9fLyAgIC9fL1xfXyxfL18vIC9fL1xfX18vXF9fLwoK"
+ 
+
