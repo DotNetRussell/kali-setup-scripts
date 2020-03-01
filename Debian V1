@@ -21,6 +21,7 @@ apt-get install curl -y;
 apt-get install git -y;
 apt-get install openvpn -y;
 apt-get install network-manager-openvpn -y;
+apt-get install tmux -y;
 
 apt-get install aespipe -y;
 
