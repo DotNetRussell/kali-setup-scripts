@@ -33,6 +33,7 @@ apt-get install dirb -y;
 apt-get install wfuzz -y;
 apt-get install ncat -y;
 apt-get install mitmproxy -y;
+apt-get install exploitdb -y;
 
 wget https://raw.githubusercontent.com/DotNetRussell/ShinobiShell/master/ShinobiShell.py;
 chmod +x ShinobiShell;
