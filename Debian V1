@@ -22,7 +22,7 @@ apt-get install git -y;
 apt-get install openvpn -y;
 apt-get install network-manager-openvpn -y;
 apt-get install tmux -y;
-
+apt-get install python-pip -y;
 apt-get install aespipe -y;
 
 echo 'Installing h@ck3r t00l5'
