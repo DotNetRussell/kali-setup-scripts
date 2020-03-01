@@ -24,6 +24,7 @@ apt-get install network-manager-openvpn -y;
 apt-get install tmux -y;
 apt-get install python-pip -y;
 apt-get install aespipe -y;
+apt-get install smbclient -y;
 
 echo 'Installing h@ck3r t00l5'
 
