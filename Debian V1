@@ -40,8 +40,8 @@ apt-get install exploitdb -y;
 apt-get install wpscan -y;
 
 wget https://raw.githubusercontent.com/DotNetRussell/ShinobiShell/master/ShinobiShell.py;
-chmod +x ShinobiShell;
-mv ShinobiShell /usr/bin/shinobishell
+chmod +x ShinobiShell.py;
+mv ShinobiShell.py /usr/bin/shinobishell
 
 wget https://raw.githubusercontent.com/DotNetRussell/DomainChecker/master/domainchecker.sh
 chmod +x domainchecker.sh
