@@ -43,6 +43,10 @@ wget https://raw.githubusercontent.com/DotNetRussell/ShinobiShell/master/Shinobi
 chmod +x ShinobiShell;
 mv ShinobiShell /usr/bin/shinobishell
 
+wget https://raw.githubusercontent.com/DotNetRussell/DomainChecker/master/domainchecker.sh
+chmod +x domainchecker.sh
+mv domainchecker.sh /usr/bin/domainchecker
+
 apt-get install sublist3r -y;
 apt-get install dnsrecon -y;
 apt-get install cadaver -y;
