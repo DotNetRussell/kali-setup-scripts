@@ -50,9 +50,17 @@ mv domainchecker.sh /usr/bin/domainchecker
 apt-get install sublist3r -y;
 apt-get install dnsrecon -y;
 apt-get install cadaver -y;
+apt-get install recon-ng -y;
+
+wget https://github.com/projectdiscovery/nuclei/releases/download/v2.1.0/nuclei_2.1.0_linux_amd64.tar.gz
+tar -xf nuclei_2.1.0_linux_amd64.tar.gz
+mv nuclei /usr/bin/
+rm nuclei_2.1.0_linux_amd64.tar.gz
+
+git clone https://github.com/projectdiscovery/nuclei-templates.git
+mv nuclei-templates /usr/share/
 
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
-
 
 echo 'Setting up LAMP stack'
 apt-get install apache2 -y;
