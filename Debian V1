@@ -38,6 +38,7 @@ apt-get install ncat -y;
 apt-get install mitmproxy -y;
 apt-get install exploitdb -y;
 apt-get install wpscan -y;
+apt-get install masscan -y;
 
 wget https://raw.githubusercontent.com/DotNetRussell/ShinobiShell/master/ShinobiShell.py;
 chmod +x ShinobiShell.py;
