@@ -20,7 +20,7 @@ echo 'Running update and upgrade'
 apt update;
 apt upgrade -y -q;
 
-apt install unzip curl git openvpn network-manager-openvpn tmux python-pip aespipe smbclient ftp telnet lynx -y -q;
+apt install unzip curl git openvpn network-manager-openvpn tmux python-pip aespipe smbclient ftp telnet lynx -y;
 
 echo 'Installing h@ck3r t00l5'
 
