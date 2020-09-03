@@ -1,10 +1,12 @@
-apt-get update;
-apt-get upgrade -y;
+export DEBIAN_FRONTEND=noninteractive
 
-apt-get install dirmngr --install-recommends
+apt update;
+apt upgrade -y;
+
+apt-get install dirmngr --install-recommends -y -q
 
 echo 'Installing gpg'
-apt-get install gpg -y;
+apt install gpg -y -q;
 
 echo 'Configuring public keys'
 gpg --keyserver keyserver.ubuntu.com --recv-keys ED444FF07D8D0BF6
@@ -15,33 +17,14 @@ echo 'deb http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/
 echo 'deb-src http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
 
 echo 'Running update and upgrade'
-apt-get update;
-apt-get upgrade -y;
+apt update;
+apt upgrade -y -q;
 
-apt-get install unzip -y;
-apt-get install curl -y;
-apt-get install git -y;
-apt-get install openvpn -y;
-apt-get install network-manager-openvpn -y;
-apt-get install tmux -y;
-apt-get install python-pip -y;
-apt-get install aespipe -y;
-apt-get install smbclient -y;
-apt-get install ftp -y;
-apt-get install telnet -y;
-apt-get install lynx -y;
+apt install unzip curl git openvpn network-manager-openvpn tmux python-pip aespipe smbclient ftp telnet lynx -y -q;
 
 echo 'Installing h@ck3r t00l5'
 
-apt-get install nmap -y;
-apt-get install nikto -y;
-apt-get install dirb -y;
-apt-get install wfuzz -y;
-apt-get install ncat -y;
-apt-get install mitmproxy -y;
-apt-get install exploitdb -y;
-apt-get install wpscan -y;
-apt-get install masscan -y;
+apt install nmap nikto dirb wfuzz ncat mitmproxy exploitdb wpscan masscan -y -q;
 
 wget https://raw.githubusercontent.com/DotNetRussell/ShinobiShell/master/ShinobiShell.py;
 chmod +x ShinobiShell.py;
@@ -51,10 +34,11 @@ wget https://raw.githubusercontent.com/DotNetRussell/DomainChecker/master/domain
 chmod +x domainchecker.sh
 mv domainchecker.sh /usr/bin/domainchecker
 
-apt-get install sublist3r -y;
-apt-get install dnsrecon -y;
-apt-get install cadaver -y;
-apt-get install recon-ng -y;
+apt install sublist3r dnsrecon cadaver recon-ng davtest -y -q;
+
+git clone https://github.com/DotNetRussell/chainer.git
+chmod +x chainer/chainer
+mv chainer /usr/bin/chainer
 
 wget https://github.com/projectdiscovery/nuclei/releases/download/v2.1.0/nuclei_2.1.0_linux_amd64.tar.gz
 tar -xf nuclei_2.1.0_linux_amd64.tar.gz
@@ -67,9 +51,7 @@ mv nuclei-templates /usr/share/
 curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && chmod 755 msfinstall && ./msfinstall
 
 echo 'Setting up LAMP stack'
-apt-get install apache2 -y;
-apt install mariadb-server -y;
-apt install php libapache2-mod-php php-mysql -y;
+apt install apache2 mariadb-server php libapache2-mod-php php-mysql -y -q;
 service apache2 stop;
 
 echo 'Installing wordlists'
