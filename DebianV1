@@ -25,6 +25,8 @@ apt install unzip curl git openvpn network-manager-openvpn tmux python-pip aespi
 echo 'Installing h@ck3r t00l5'
 
 apt install nmap nikto dirb wfuzz ncat mitmproxy exploitdb wpscan masscan -y -q;
+apt install git -y;
+apt install python3-psutil;
 
 wget https://raw.githubusercontent.com/DotNetRussell/ShinobiShell/master/ShinobiShell.py;
 chmod +x ShinobiShell.py;
